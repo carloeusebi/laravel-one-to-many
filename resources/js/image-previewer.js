@@ -2,8 +2,6 @@ const thumbnailField = document.getElementById("thumbnail");
 const thumbnailPreview = document.getElementById("thumbnail-preview");
 const placeholder = thumbnailPreview.src;
 
-console.log(placeholder);
-
 let blobUrl = null;
 
 thumbnailField.addEventListener("change", () => {
