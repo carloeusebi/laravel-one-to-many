@@ -4,6 +4,10 @@
     <x-admin.projects.header :title="$project->name" has-back-button />
 
     <section>
+
+        <h3> <span class="badge text-black"
+                style="background-color: {{ $project->type?->color }}">{{ $project->type?->label }}</span></h3>
+
         <div class="row">
             <div class="col-12 col-md-8">
 
