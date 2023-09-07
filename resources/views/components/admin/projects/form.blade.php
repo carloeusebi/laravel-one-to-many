@@ -15,11 +15,15 @@
             @enderror
         </div>
 
+        {{-- TYPE SELECT --}}
         <div class="mb-2 col-12 col-md-4">
             <label for="type" class="form-label">Type</label>
             <select class="form-select" id="type">
                 <option>None</option>
-                {{-- TODO HERE GO TYPES --}}
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}" @if (old('type_id', $project->type_id) === $type->id) selected @endif>
+                        {{ $type->label }}</option>
+                @endforeach
             </select>
         </div>
 
@@ -75,10 +79,10 @@
             </div>
 
             {{-- thumbnail previdew --}}
-            <div class="col-12 col-md-4 d-none d-md-block ps-5">
+            <div class="col-12 col-md-4 d-none d-md-flex ps-5">
                 <img id="thumbnail-preview"
                     src="{{ old('thumbUlr', $project->thumbUrl) ?? Vite::asset('resources/images/placeholder.jpg') }}"
-                    alt="thumbnail preview" class="img-fluid" />
+                    alt="thumbnail preview" class="img-fluid w-100 " />
             </div>
         </div>
 
