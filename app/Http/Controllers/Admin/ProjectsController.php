@@ -28,7 +28,6 @@ class ProjectsController extends Controller
     {
         $project = new Project();
         $types = Type::select('label', 'id')->get();
-        dd($types);
         return view('admin.projects.create', compact('project', 'types'));
     }
 

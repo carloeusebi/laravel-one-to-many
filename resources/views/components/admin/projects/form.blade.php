@@ -15,16 +15,23 @@
             @enderror
         </div>
 
+
         {{-- TYPE SELECT --}}
         <div class="mb-2 col-12 col-md-4">
             <label for="type" class="form-label">Type</label>
-            <select class="form-select" id="type">
-                <option>None</option>
+            <select class="form-select @error('type_id') is-invalid @enderror" id="type" name="type_id">
+                <option value="">None</option>
                 @foreach ($types as $type)
                     <option value="{{ $type->id }}" @if (old('type_id', $project->type_id) === $type->id) selected @endif>
-                        {{ $type->label }}</option>
+                        {{ $type->label }}
+                    </option>
                 @endforeach
             </select>
+            @error('type_id')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
 
         {{-- URL --}}

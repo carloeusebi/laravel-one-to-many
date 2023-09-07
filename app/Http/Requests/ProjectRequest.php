@@ -23,6 +23,7 @@ class ProjectRequest extends FormRequest
     {
         return [
             'name' => 'required|max:80',
+            'type_id' => 'nullable|exists:types,id',
             'url' => 'nullable|max:80|url',
             'github_url' => 'nullable|max:80|url',
             'thumbnail' => 'nullable|image:jpg:jpeg:png:webp',
