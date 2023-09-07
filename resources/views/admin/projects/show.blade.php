@@ -25,7 +25,7 @@
             </div>
             <div class="col-12 col-md-4 d-flex flex-column justify-content-between">
                 {{-- preview --}}
-                <figure class="bg-dark-subtle overflow-hidden d-flex justify-content-center align-items-center ">
+                <figure class="bg-dark-subtle overflow-hidden d-flex justify-content-center align-items-center">
                     <img src="{{ $project->thumbUrl ?? Vite::asset('resources/images/placeholder.jpg') }}" alt="thumbnail"
                         class="block object-fit-cover  w-100" />
                 </figure>

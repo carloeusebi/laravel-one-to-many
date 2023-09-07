@@ -31,12 +31,13 @@
             </div>
 
             {{-- column --}}
-            <table class="table ">
+            <table class="table">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Description</th>
+                        <th scope="col">Type</th>
                         <th scope="col">Created</th>
                         <th scope="col">Updated</th>
                         <th scope="col"></th>
@@ -44,7 +45,7 @@
                 </thead>
                 <tbody>
                     @foreach ($projects as $project)
-                        <tr>
+                        <tr class="align-middle">
                             <th scope="row">{{ $project->id }}</th>
                             <td>{{ $project->name }}</td>
                             <td>{{ substr($project->description, 0, 20) }}
@@ -52,6 +53,10 @@
                                 @if (strlen($project->description) > 20)
                                     ...
                                 @endif
+                            </td>
+                            <td>
+                                <span class="badge text-black"
+                                    style="background-color: {{ $project->type?->color }}">{{ $project->type?->label }}</span>
                             </td>
                             <td>{{ $project->created_at }}</td>
                             <td>{{ $project->updated_at }}</td>
