@@ -22,7 +22,7 @@
             <select class="form-select @error('type_id') is-invalid @enderror" id="type" name="type_id">
                 <option value="">None</option>
                 @foreach ($types as $type)
-                    <option value="{{ $type->id }}" @if (old('type_id', $project->type_id) === $type->id) selected @endif>
+                    <option value="{{ $type->id }}" @if (old('type_id', $project->type_id) == $type->id) selected @endif>
                         {{ $type->label }}
                     </option>
                 @endforeach

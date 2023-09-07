@@ -17,8 +17,24 @@ class ProjectsController extends Controller
     public function index(Request $request)
     {
         $search = $request->get('search');
-        $projects = Project::where('name', 'like', "%$search%")->paginate(10);
-        return view('admin.projects.index', compact('projects'));
+        $type_filter = $request->get('type_filter');
+
+        $query = Project::orderBy('name');
+
+        // searchbar filter
+        if ($search) {
+            $query->where('name', 'like', "%$search%");
+        }
+
+        // type select filter
+        if ($type_filter) {
+            $query->where('type_id', $type_filter);
+        }
+
+        $projects = $query->paginate(10);
+
+        $types = Type::select('id', 'label')->get();
+        return view('admin.projects.index', compact('projects', 'types', 'type_filter'));
     }
 
     /**

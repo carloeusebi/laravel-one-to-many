@@ -1,7 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-admin.projects.header title="Projects Manager" />
+    <x-admin.projects.header title="Projects Manager">
+        {{-- CREATE PROJECT LINK BUTTON --}}
+        <div>
+            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary ">Create a new Project</a>
+        </div>
+    </x-admin.projects.header>
 
 
     <div class="d-flex align-items-center justify-content-between gap-4">
@@ -14,11 +19,18 @@
                 <input type="search" class="form-control" placeholder="Search..." name="search" />
             </form>
         </div>
+        {{-- TYPE FILTER FORM --}}
+        <form id="type-filter">
+            <select class="form-select @error('type_id') is-invalid @enderror" id="type" name="type_filter">
+                <option value="">None</option>
+                @foreach ($types as $type)
+                    <option value="{{ $type->id }}" @if ($type_filter == $type->id) selected @endif>
+                        {{ $type->label }}
+                    </option>
+                @endforeach
+            </select>
+        </form>
 
-        {{-- CREATE PROJECT LINK BUTTON --}}
-        <div>
-            <a href="{{ route('admin.projects.create') }}" class="btn btn-primary ">Create a new Project</a>
-        </div>
     </div>
 
     <section id="projects" class="my-5">
@@ -84,5 +96,6 @@
 @endsection
 
 @section('scripts')
+    @vite('resources/js/project-index.js')
     @vite('resources/js/delete-project-confirmation.js')
 @endsection
