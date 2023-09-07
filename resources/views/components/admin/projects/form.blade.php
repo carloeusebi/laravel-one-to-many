@@ -79,8 +79,9 @@
 
     {{-- thumbnail previdew --}}
     <div class="col">
-        <img id="thumbnail-preview" src="{{ Vite::asset('resources/images/placeholder.jpg') }}" alt="thumbnail preview"
-            class="img-fluid w-100" />
+        <img id="thumbnail-preview"
+            src="{{ old('thumbUlr', $project->thumbUrl) ?? Vite::asset('resources/images/placeholder.jpg') }}"
+            alt="thumbnail preview" class="img-fluid w-100" />
     </div>
 
 
